@@ -1,0 +1,44 @@
+/* ManagerWrapper.module.scss - Scoped styles cho manager */
+
+.manager-wrapper {
+  /* Đảm bảo manager có scope riêng */
+  isolation: isolate;
+  min-height: 100vh;
+  
+  /* Override global styles chỉ trong scope này */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Đảm bảo fonts và variables chỉ áp dụng trong manager */
+  font-family: 'Roboto', sans-serif;
+  
+  /* Manager specific variables */
+  --manager-text-color: rgb(31, 41, 55);
+  --manager-white: #fff;
+  --manager-shadow-small: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --manager-shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --manager-primary: #448afc;
+  --manager-color-interactive: rgb(239, 246, 255);
+  --manager-default-margin-bottom: 32px;
+  --manager-default-gap: 24px;
+  --manager-default-border-radius: 12px;
+  --manager-default-padding: 24px;
+  --manager-sidebar-width: 320px;
+  --manager-active-color: rgb(37, 99, 235);
+}
+
+/* Reset chỉ trong scope manager */
+.manager-wrapper {
+  button,
+  input,
+  [tabindex] {
+    outline: none;
+    border: none;
+  }
+
+  a[href] {
+    color: var(--manager-text-color);
+    text-decoration: none;
+  }
+}

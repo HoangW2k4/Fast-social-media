@@ -1,0 +1,151 @@
+.sidebar-container {
+  width: 250px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 10px 20px 20px 20px;
+  position: sticky;
+  left: 6rem;
+  top: 14rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.sidebar-container.scrolled {
+  /* top: 9.5rem; */
+  transition: 0.5s ease-in-out;
+}
+.sidebar-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #22223b;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  align-self: flex-start;
+}
+
+.sidebar-section {
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 1px 5px;
+}
+
+.sidebar-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444242;
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+
+.sidebar-select-wrapper {
+  position: relative;
+}
+
+.sidebar-select {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 8px 36px 8px 12px;
+  font-size: 1rem;
+  background: #fff;
+  appearance: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  outline: none;
+  transition: border 0.2s;
+}
+
+.sidebar-select:focus {
+  border-color: #2563eb;
+}
+
+.sidebar-select-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #888;
+}
+
+.sidebar-amenities {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-amenity {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-checkbox {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  accent-color: #41a8fc;
+}
+
+.sidebar-amenity-label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.sidebar-amenity-icon {
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+  color: #1b95f9;
+  margin-right: 4px;
+}
+.sidebar-btn-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar-clean-btn {
+  width: 12rem;
+  height: 2.4rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #989898; /* Màu đỏ */
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.5s;
+
+}
+.sidebar-clean-btn:hover{
+  background-color: #858484;
+  scale: 1.02;
+}
+/* Search button */
+.sidebar-search-btn {
+  width: 12rem;
+  height: 2.4rem;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #facc15;
+  color: #fff;        
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Đổ bóng */
+}
+.sidebar-search-btn:hover {
+  background-color: #e3ba05;
+  scale: 1.02;
+}

@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Manager-scoped global styles - chỉ áp dụng trong manager wrapper */
+.manager-wrapper {
+    --text-color: rgb(31, 41, 55);
+    --white: #fff;
+    --shadow-small: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --primary: #448afc;
+    --color-interactive: rgb(239, 246, 255);
+    --default-margin-bottom: 32px;
+    --default-gap: 24px;
+    --default-border-radius: 12px;
+    --default-padding: 24px;
+    --sidebar-width: 320px;
+    --active-color: rgb(37, 99, 235);
+    
+    /* Reset styles chỉ trong manager */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Font settings chỉ trong manager */
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    
+    button,
+    input,
+    [tabindex] {
+        outline: none;
+        border: none;
+    }
+
+    a[href] {
+        color: var(--text-color);
+        text-decoration: none;
+    }
+}

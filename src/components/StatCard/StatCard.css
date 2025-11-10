@@ -1,0 +1,45 @@
+.stat-card {
+    border-radius: 12px;
+    padding: 24px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stat-text {
+    flex: 1;
+}
+
+.stat-title {
+    font-size: 0.9rem;
+    margin: 0 0 8px 0;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    line-height: 1;
+}
+
+.stat-bonus {
+    font-size: 0.8rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    opacity: 0.8;
+    margin-left: 16px;
+}

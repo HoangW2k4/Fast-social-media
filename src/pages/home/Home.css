@@ -1,0 +1,491 @@
+/* ===== TRANG HOME - STICKY LAYOUT ===== */
+.home {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.search-header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  /* background: rgba(255, 255, 255, 0.95); */
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.search-header.scrolled {
+  /* background: rgba(255, 255, 255, 0.98); */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== STICKY SIDEBAR ===== */
+.sidebar-container {
+  position: fixed !important;
+  top: 200px; /* Dưới header */
+  left: 24px;
+  /* height: calc(100vh - 220px); */
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  z-index: 900;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+.sidebar-container.scrolled {
+  top: 149px; /* Điều chỉnh khi scroll */
+}
+
+/* ===== MAIN LAYOUT ===== */
+.main-layout {
+  margin-left: 290px; /* Tạo khoảng cách cho sidebar (280px + 48px margin) */
+  margin-top: 187px; /* Tạo khoảng cách cho header */
+  margin-right: 24px;
+  padding: 24px 0;
+  min-height: calc(100vh - 200px);
+}
+
+/* ===== CONTAINER BÀI ĐĂNG ===== */
+.port-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0px;
+  max-width: 82%;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===== HIỆU ỨNG LOADING ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== STYLE CHO ROOM POST ===== */
+.room-post {
+  width: 100%;
+  margin: 0;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  animation: slideInLeft 0.5s ease-out;
+  animation-fill-mode: both;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ===== INFINITE SCROLL TRIGGER ===== */
+.infinite-scroll-trigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px 0;
+  margin: 20px 0;
+  background: transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.infinite-scroll-trigger:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.room-post:nth-child(1) { animation-delay: 0.1s; }
+.room-post:nth-child(2) { animation-delay: 0.2s; }
+.room-post:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.room-post:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== SCROLL BAR STYLING ===== */
+.sidebar-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+
+.sidebar-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.port-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.port-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.port-container::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.port-container::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Large Desktop */
+@media (min-width: 1600px) {
+  .main-layout {
+    margin-left: 350px;
+    margin-right: 48px;
+  }
+  
+  .sidebar-container {
+    width: 300px;
+    left: 32px;
+  }
+}
+
+/* Tablet Large */
+@media (max-width: 1200px) {
+  .main-layout {
+    margin-left: 300px;
+    margin-right: 16px;
+  }
+  
+  .sidebar-container {
+    width: 260px;
+    left: 16px;
+    padding: 20px;
+  }
+  
+  .port-container {
+    gap: 20px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .main-layout {
+    margin-left: 280px;
+    margin-right: 12px;
+  }
+  
+  .sidebar-container {
+    width: 240px;
+    left: 12px;
+    padding: 16px;
+  }
+}
+
+/* Mobile Large */
+@media (max-width: 768px) {
+  .sidebar-container {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100%;
+    height: auto;
+    margin: 16px;
+    margin-bottom: 0;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .main-layout {
+    margin: 0;
+    margin-top: 200px;
+    padding: 0 16px 24px;
+  }
+  
+  .home {
+    background: #f8fafc;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .main-layout {
+    margin-top: 180px;
+    padding: 0 12px 20px;
+  }
+  
+  .sidebar-container {
+    margin: 12px;
+    padding: 16px;
+  }
+  
+  .port-container {
+    gap: 16px;
+  }
+  
+  .search-header {
+    padding: 12px;
+  }
+}
+
+/* ===== HIỆU ỨNG TRANG ===== */
+.home::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  padding: 40px 20px;
+}
+
+.empty-content {
+  text-align: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.empty-title {
+  margin: 0 0 12px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.empty-message {
+  margin: 0 0 24px 0;
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.empty-clear-btn {
+  padding: 12px 24px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.empty-clear-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+/* ===== LOAD MORE INDICATOR ===== */
+.load-more-indicator {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  margin-top: 16px;
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.load-more-indicator .loading-spinner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 12px;
+  color: #3b82f6;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* ===== PRELOAD TRIGGER STYLES ===== */
+.room-post-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* .room-post-wrapper.preload-trigger {
+  /* Visual indicator cho preload trigger (optional) */
+  /* border-left: 3px solid transparent; */
+
+
+.room-post-wrapper.preload-trigger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.02) 50%, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.room-post-wrapper.preload-trigger:hover::before {
+  opacity: 1;
+}
+
+/* ===== ERROR STATE FOR LOAD MORE ===== */
+.load-more-error {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+  margin-top: 16px;
+}
+
+.load-more-error .error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  color: #dc2626;
+  font-size: 0.9rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.load-more-error .retry-btn {
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.load-more-error .retry-btn:hover {
+  background: #b91c1c;
+}
+
+/* Fallback cho port-container:empty */
+.port-container:empty::after {
+  content: "Đang tải danh sách phòng trọ...";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #64748b;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+.room-post {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+.main-layout {
+  contain: layout style;
+}
+
+.sidebar-container {
+  contain: layout style;
+}
+
+/* ===== SMOOTH SCROLLING ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+.port-container {
+  scroll-behavior: smooth;
+}
+
+/* ===== FOCUS STATES ===== */
+.sidebar-container:focus-within {
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.15);
+}
+
+/* ===== LOADING STATES ===== */
+.room-post.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.port-container.loading {
+  filter: blur(1px);
+  transition: filter 0.3s ease;
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  .home {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  }
+  
+  .search-header {
+    background: rgba(30, 41, 59, 0.95);
+    border-bottom-color: #475569;
+  }
+  
+  .sidebar-container {
+    background: #334155;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  .port-container:empty::after {
+    background: #475569;
+    color: #cbd5e1;
+  }
+}
