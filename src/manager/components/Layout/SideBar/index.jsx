@@ -175,93 +175,96 @@ function ManagerSideBar() {
       </div>
 
       {/* profile */}
-      <div className={cx("content")}>
-        <div className={cx("profile")}>
-          <img
-            src={profile.avatar}
-            alt={profile.name}
-            className={cx("avatar")}
-          />
-          <h3 className={cx("name")}>{profile.name}</h3>
-          <p className={cx("role")}>
-            {profile.role} • Tham gia từ {profile.joinDate}
-          </p>
-          <button className={cx("more-btn")} onClick={toggleInfo}>
-            {visibleInfo ? "Thu gọn" : "Xem thêm"}
-            <span className={cx("more-btn-icon", { active: visibleInfo })}>
-              <FontAwesomeIcon icon={faChevronDown} />
-            </span>
-          </button>
-        </div>
-
-        <div className={cx("profile-info", { visible: visibleInfo })}>
-          <Button
-            leftIcon={changeInfoBtn.leftIcon}
-            size="large"
-            primary
-            className={cx("change-info-btn")}
-          >
-            {changeInfoBtn.title}
-          </Button>
-          <InfoItem
-            title="Email"
-            value={profile.email}
-            icon={<MailIcon sx={{ fontSize: 20 }} />}
-          />
-          <InfoItem
-            title="Số điện thoại"
-            value={profile.phoneNumber}
-            icon={<PhoneIcon sx={{ fontSize: 20 }} />}
-          />
-          <div className={cx("divider")}>
-            <InfoItem
-              title="Giới tính"
-              value={profile.isMale ? "Nam" : "Nữ"}
-              iconRight={
-                profile.isMale ? (
-                  <MaleIcon sx={{ fontSize: 16, color: "#4dbbff" }} />
-                ) : (
-                  <FemaleIcon sx={{ fontSize: 16, color: "#ff47a0" }} />
-                )
-              }
-              size="medium"
+      <div className={cx("body")}>
+        <div className={cx("content")}>
+          <div className={cx("profile")}>
+            <img
+              src={profile.avatar}
+              alt={profile.name}
+              className={cx("avatar")}
             />
-            <InfoItem
-              title="Ngày sinh"
-              value={profile.dateOfBirth}
-              icon={<CalendarMonthIcon sx={{ fontSize: 20 }} />}
-              size="medium"
-            />
+            <h3 className={cx("name")}>{profile.name}</h3>
+            <p className={cx("role")}>
+              {profile.role} • Tham gia từ {profile.joinDate}
+            </p>
+            <button className={cx("more-btn")} onClick={toggleInfo}>
+              {visibleInfo ? "Thu gọn" : "Xem thêm"}
+              <span className={cx("more-btn-icon", { active: visibleInfo })}>
+                <FontAwesomeIcon icon={faChevronDown} />
+              </span>
+            </button>
           </div>
-          <InfoItem
-            title="Nơi ở"
-            value={profile.address}
-            icon={<LocationOnIcon sx={{ fontSize: 20 }} />}
-          />
-          {profile.extraContact && (
+
+          <div className={cx("profile-info", { visible: visibleInfo })}>
+            <Button
+              leftIcon={changeInfoBtn.leftIcon}
+              size="large"
+              primary
+              className={cx("change-info-btn")}
+            >
+              {changeInfoBtn.title}
+            </Button>
             <InfoItem
-              title="Liên hệ khác"
-              value={profile.extraContact}
+              title="Email"
+              value={profile.email}
+              icon={<MailIcon sx={{ fontSize: 20 }} />}
+            />
+            <InfoItem
+              title="Số điện thoại"
+              value={profile.phoneNumber}
               icon={<PhoneIcon sx={{ fontSize: 20 }} />}
             />
-          )}
+            <div className={cx("divider")}>
+              <InfoItem
+                title="Giới tính"
+                value={profile.isMale ? "Nam" : "Nữ"}
+                iconRight={
+                  profile.isMale ? (
+                    <MaleIcon sx={{ fontSize: 16, color: "#4dbbff" }} />
+                  ) : (
+                    <FemaleIcon sx={{ fontSize: 16, color: "#ff47a0" }} />
+                  )
+                }
+                size="medium"
+              />
+              <InfoItem
+                title="Ngày sinh"
+                value={profile.dateOfBirth}
+                icon={<CalendarMonthIcon sx={{ fontSize: 20 }} />}
+                size="medium"
+              />
+            </div>
+            <InfoItem
+              title="Nơi ở"
+              value={profile.address}
+              icon={<LocationOnIcon sx={{ fontSize: 20 }} />}
+            />
+            {profile.extraContact && (
+              <InfoItem
+                title="Liên hệ khác"
+                value={profile.extraContact}
+                icon={<PhoneIcon sx={{ fontSize: 20 }} />}
+              />
+            )}
+          </div>
         </div>
-      </div>
 
-      <nav className={cx("navigation")}>
-        {menuItems.map((item, index) => (
-          <Link
-            to={item.path}
-            key={index}
-            className={cx("nav-item", {
-              active: location.pathname === item.path,
-            })}
-          >
-            <FontAwesomeIcon icon={item.icon} className={cx("icon")} />
-            <span>{item.title}</span>
-          </Link>
-        ))}
-      </nav>
+        {/* navigation */}
+        <nav className={cx("navigation")}>
+          {menuItems.map((item, index) => (
+            <Link
+              to={item.path}
+              key={index}
+              className={cx("nav-item", {
+                active: location.pathname === item.path,
+              })}
+            >
+              <FontAwesomeIcon icon={item.icon} className={cx("icon")} />
+              <span>{item.title}</span>
+            </Link>
+          ))}
+        </nav>
+      </div>
 
       <div className={cx("footer")}>
         <button onClick={handleLogout} className={cx("logout-btn")}>
