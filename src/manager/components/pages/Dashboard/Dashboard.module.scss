@@ -1,52 +1,51 @@
 .wrapper {
-  padding: 1.5rem;
-  background: #f8fafc;
-  min-height: 100vh;
+  background-color: transparent;
+  width: 100%;
+  padding: 24px;
 }
 
+//Stat card
 .stats-container {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: var(--default-margin-bottom);
 }
 
+//Chart
 .content-container {
+  width: 100%;
+  min-height: 420px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: var(--default-margin-bottom);
 }
 
 .content-box {
   background: white;
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e5e7eb;
+  border-radius: var(--default-border-radius);
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-@media (max-width: 1200px) {
+//responsive
+@media (max-width: 1280px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .content-container {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 768px) {
-  .wrapper {
-    padding: 1rem;
-  }
-
+@media (max-width: 800px) {
   .stats-container {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-  }
-
-  .content-container {
-    gap: 1rem;
-  }
-
-  .content-box {
-    padding: 1rem;
+    grid-template-columns: 1fr;
   }
 }

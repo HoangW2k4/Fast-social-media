@@ -123,7 +123,7 @@ const RoomDetail = ({ room, onClose }) => {
                             <div className="detail-row">
                                 <i className="fas fa-dollar-sign detail-icon"></i>
                                 <span className="detail-label">Giá thuê:</span>
-                                <span className="detail-value price">{formatPrice(room.price)}</span>
+                                <span className="detail-value">{formatPrice(room.price)}</span>
                             </div>
                             <div className="detail-row">
                                 <i className="fas fa-expand-alt detail-icon"></i>
@@ -150,7 +150,7 @@ const RoomDetail = ({ room, onClose }) => {
                                 <div className="furniture-list">
                                     {(room.utilities || room.furniture || []).map((item, index) => (
                                         <span key={index} className="furniture-item">
-                                            <i className="fas fa-check furniture-icon"></i>
+                                            {/* <i className="fas fa-check furniture-icon"></i> */}
                                             {getFurnitureDisplayName(typeof item === 'string' ? item : item.name || item)}
                                         </span>
                                     ))}

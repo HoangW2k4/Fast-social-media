@@ -8,16 +8,16 @@
 export const decodeJWT = (token) => {
   try {
     if (!token) return null;
-    
-    const parts = token.split('.');
+
+    const parts = token.split(".");
     if (parts.length !== 3) return null;
-    
+
     const payload = parts[1];
     const decoded = JSON.parse(atob(payload));
-    
+
     return decoded;
   } catch (error) {
-    console.error('Error decoding JWT:', error);
+    console.error("Error decoding JWT:", error);
     return null;
   }
 };
@@ -31,11 +31,11 @@ export const isTokenExpired = (token) => {
   try {
     const decoded = decodeJWT(token);
     if (!decoded || !decoded.exp) return true;
-    
+
     const currentTime = Math.floor(Date.now() / 1000);
     return decoded.exp < currentTime;
   } catch (error) {
-    console.error('Error checking token expiration:', error);
+    console.error("Error checking token expiration:", error);
     return true;
   }
 };
@@ -50,7 +50,7 @@ export const getUserRoles = (token) => {
     const decoded = decodeJWT(token);
     return decoded?.roles || [];
   } catch (error) {
-    console.error('Error getting user roles:', error);
+    console.error("Error getting user roles:", error);
     return [];
   }
 };
@@ -65,7 +65,7 @@ export const getUsername = (token) => {
     const decoded = decodeJWT(token);
     return decoded?.sub || null;
   } catch (error) {
-    console.error('Error getting username:', error);
+    console.error("Error getting username:", error);
     return null;
   }
 };
@@ -81,7 +81,7 @@ export const hasRole = (token, role) => {
     const roles = getUserRoles(token);
     return roles.includes(role);
   } catch (error) {
-    console.error('Error checking role:', error);
+    console.error("Error checking role:", error);
     return false;
   }
 };
@@ -104,17 +104,17 @@ export const getUserInfo = (token) => {
   try {
     const decoded = decodeJWT(token);
     if (!decoded) return null;
-    
+
     return {
       username: decoded.sub,
       roles: decoded.roles || [],
       jti: decoded.jti,
       issuedAt: decoded.iat,
       expiresAt: decoded.exp,
-      isExpired: isTokenExpired(token)
+      isExpired: isTokenExpired(token),
     };
   } catch (error) {
-    console.error('Error getting user info:', error);
+    console.error("Error getting user info:", error);
     return null;
   }
 };
@@ -123,8 +123,8 @@ export const getUserInfo = (token) => {
  * Role constants for easy use
  */
 export const ROLES = {
-  USER: 'ROLE_USER',
-  MANAGER: 'ROLE_MANAGER'
+  USER: "ROLE_USER",
+  MANAGER: "ROLE_MANAGER",
 };
 
 /**
@@ -134,18 +134,18 @@ export const ROLES = {
  */
 export const getDefaultPath = (token) => {
   try {
-    if (!isAuthenticated(token)) return '/login';
-    
+    if (!isAuthenticated(token)) return "/login";
+
     if (hasRole(token, ROLES.MANAGER)) {
-      return '/manager';
+      return "/manager/dashboard";
     } else if (hasRole(token, ROLES.USER)) {
-      return '/';
+      return "/";
     }
-    
-    return '/login';
+
+    return "/login";
   } catch (error) {
-    console.error('Error getting default path:', error);
-    return '/login';
+    console.error("Error getting default path:", error);
+    return "/login";
   }
 };
 
@@ -153,9 +153,9 @@ export const getDefaultPath = (token) => {
  * Clear authentication data from localStorage
  */
 export const clearAuthData = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('userName');
-  localStorage.removeItem('userRole');
+  localStorage.removeItem("token");
+  localStorage.removeItem("userName");
+  localStorage.removeItem("userRole");
 };
 
 /**
@@ -166,11 +166,11 @@ export const storeAuthData = (token) => {
   try {
     const userInfo = getUserInfo(token);
     if (userInfo) {
-      localStorage.setItem('token', token);
-      localStorage.setItem('userName', userInfo.username);
-      localStorage.setItem('userRole', JSON.stringify(userInfo.roles));
+      localStorage.setItem("token", token);
+      localStorage.setItem("userName", userInfo.username);
+      localStorage.setItem("userRole", JSON.stringify(userInfo.roles));
     }
   } catch (error) {
-    console.error('Error storing auth data:', error);
+    console.error("Error storing auth data:", error);
   }
 };
